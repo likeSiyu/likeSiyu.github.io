@@ -7,62 +7,82 @@
         body {
             text-align: center;
             background: linear-gradient(to bottom right, #FCF5ED, #FFFFFF);
-            text-align: center;
         }
-        #images {
+        #images1, #images2 {
             display: flex;
-            justify-content: center; /* 使图片中心对齐 */
-            align-items: center; /* 使图片在垂直方向上居中对齐 */
-            margin-bottom: 50px; /* 设置第一行和第二行之间的距离为50px */
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
         }
-        #images img {
-            border-radius: 50%; /* 使图片变为圆形 */
-            max-width: 100px; /* 设置图片的最大宽度 */
-            max-height: 100px; /* 设置图片的最大高度 */
+        #images1 img, #images2 img {
+            border-radius: 50%;
+            height: 100px; /* 设置图片的高度 */
+            width: auto; /* 让图片的宽度自动调整以保持原始的宽高比 */
         }
         #countdown {
             width:50%;
-            margin: 0 auto; /* 使#title在水平方向上居中对齐 */
+            margin: 0 auto;
             margin-bottom: 20px;
-            background-color: rgba(150, 239, 255, 0.7); /* 设置背景颜色和透明度 */
-            border-radius: 12px; /* 设置边框为圆角 */
-            padding: 20px; /* 添加内边距 */
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
         }
         #title {
-            width: 50%; /* 设置宽度为80% */
-            margin: 0 auto; /* 使#title在水平方向上居中对齐 */
+            width: 50%;
+            margin: 0 auto;
             margin-bottom: 20px;
-            background-color: rgba(150, 239, 255, 0.7); /* 设置背景颜色和透明度 */
-            border-radius: 12px; /* 设置边框为圆角 */
-            padding: 20px; /* 添加内边距 */
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
         }
         button {
-            font-size: 24px; /* 设置按钮的字体大小 */
-            background-color: #E7BCDE; /* 设置按钮的背景颜色 */
-            border-radius: 12px; /* 设置按钮的边框为圆角 */
+            font-size: 24px;
+            background-color: #E7BCDE;
+            border-radius: 12px;
         }
         .myIframe {
-            width: 50vw;
-            height: 50vh;
+            width: 80vw;
+            height: 80vh;
+        }
+
+        @media (max-width: 600px) {
+            .myIframe {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+        @keyframes clickEffect {
+            from {
+                opacity: 1;
+                transform: scale(0);
+            }
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
         }
     </style>
 </head>
 <body>
     <div id="title">
         <h1 style="display: flex; align-items: center; justify-content: center;">
-            <img src="/img/home/t1.png" alt="Image description" width="50" height="50"> <!-- 在文字前面添加图片 -->
+            <img src="/img/home/t1.png" alt="Image description" width="50" height="50">
             晓宇和思雨的一周年纪念
-            <img src="/img/home/t2.png" alt="Image description" width="50" height="50"> <!-- 在文字后面添加图片 -->
+            <img src="/img/home/t2.png" alt="Image description" width="50" height="50">
         </h1>
     </div>      
     <iframe class="myIframe" src="love.html"></iframe>
-    <div id="images">
-        <img class="round-image" src="/img/home/h1.jpg" alt="Image 1">
-        <img src="/img/home/logi.gif" alt="Image 2">
-        <img class="round-image" src="/img/home/h2.jpg" alt="Image 3">
-    </div>
+    <div id="images" style="display: flex; justify-content: center; align-items: center;">
+        <div id="images1">
+            <img class="round-image" src="/img/home/h1.jpg" alt="Image 1">
+        </div>
+        <img src="/img/home/logi.gif" alt="Image 2" style="width: 20%; height: auto;">
+        <div id="images2">
+            <img class="round-image" src="/img/home/h2.jpg" alt="Image 3">
+        </div>
+    </div>    
     <div id="countdown">
-        <p>我们已经相识：</p> <!-- 在时间之前添加文字 -->
+        <p>我们已经相识：</p>
         <p id="timer">日：小时：分钟：秒</p>
     </div>
     <div id="button">
@@ -91,6 +111,36 @@
             document.getElementById("timer").innerHTML = days + "日 " + hours + "小时 "
             + minutes + "分钟 " + seconds + "秒 ";
         }, 1000);
+        document.addEventListener('click', function(event) {
+            // 随机选择一个颜色
+            var colors = ['#EC8F5E', '#F7EFE5', '#C3ACD0', '#61A3BA', '#872341', '#435585', '#2D9596'];
+
+            // 创建多个元素
+            for (var i = 0; i < colors.length; i++) {
+                // 创建一个新的元素
+                var ripple = document.createElement('div');
+                // 设置元素的样式
+                ripple.style.width = ripple.style.height = '100px';
+                ripple.style.background = colors[i];
+                ripple.style.borderRadius = '50%';
+                ripple.style.position = 'fixed';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.opacity = '1';
+                ripple.style.animation = 'clickEffect 1s linear forwards';
+                ripple.style.animationDelay = (i * 0.1) + 's'; // 添加延迟时间
+                // 设置元素的位置
+                ripple.style.left = (event.clientX - 50 + Math.cos(i * Math.PI / 3.5) * 50) + 'px';
+                ripple.style.top = (event.clientY - 50 + Math.sin(i * Math.PI / 3.5) * 50) + 'px';
+                // 将元素添加到网页中
+                document.body.appendChild(ripple);
+                // 在动画结束后移除元素
+                setTimeout(function() {
+                    document.body.removeChild(ripple);
+                }, 1000 + i * 100); // 考虑到延迟时间
+            }
+        });
+
     </script>
 </body>
 </html>
