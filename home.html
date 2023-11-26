@@ -2,32 +2,69 @@
 <html>
 <head>
     <title>晓宇和思雨的一周年纪念</title>
+    <link rel="icon" href="/img/home/ico.png" type="image/png">
     <style>
         body {
             text-align: center;
         }
         #images {
             display: flex;
-            justify-content: space-around;
-            margin-bottom: 100px; /* 设置第一行和第二行之间的距离为50px */
+            justify-content: center; /* 使图片中心对齐 */
+            align-items: center; /* 使图片在垂直方向上居中对齐 */
+            margin-bottom: 50px; /* 设置第一行和第二行之间的距离为50px */
+        }
+        #images img {
+            border-radius: 50%; /* 使图片变为圆形 */
+            max-width: 100px; /* 设置图片的最大宽度 */
+            max-height: 100px; /* 设置图片的最大高度 */
         }
         #countdown {
+            width:50%;
+            margin: 0 auto; /* 使#title在水平方向上居中对齐 */
             margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7); /* 设置背景颜色和透明度 */
+            border-radius: 12px; /* 设置边框为圆角 */
+            padding: 20px; /* 添加内边距 */
+        }
+        #title {
+            width: 50%; /* 设置宽度为80% */
+            margin: 0 auto; /* 使#title在水平方向上居中对齐 */
+            margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7); /* 设置背景颜色和透明度 */
+            border-radius: 12px; /* 设置边框为圆角 */
+            padding: 20px; /* 添加内边距 */
+        }
+        button {
+            font-size: 24px; /* 设置按钮的字体大小 */
+            background-color: #E7BCDE; /* 设置按钮的背景颜色 */
+            border-radius: 12px; /* 设置按钮的边框为圆角 */
+        }
+        .myIframe {
+            width: 50vw;
+            height: 50vh;
         }
     </style>
 </head>
 <body>
-    <h1>晓宇和思雨的一周年纪念</h1>
+    <div id="title">
+        <h1 style="display: flex; align-items: center; justify-content: center;">
+            <img src="/img/home/t1.png" alt="Image description" width="50" height="50"> <!-- 在文字前面添加图片 -->
+            晓宇和思雨的一周年纪念
+            <img src="/img/home/t2.png" alt="Image description" width="50" height="50"> <!-- 在文字后面添加图片 -->
+        </h1>
+    </div>      
+    <iframe class="myIframe" src="love.html"></iframe>
     <div id="images">
-        <img src="image1.jpg" alt="Image 1">
+        <img class="round-image" src="/img/home/h1.jpg" alt="Image 1">
         <img src="/img/home/logi.gif" alt="Image 2">
-        <img src="image3.jpg" alt="Image 3">
+        <img class="round-image" src="/img/home/h2.jpg" alt="Image 3">
     </div>
     <div id="countdown">
+        <p>我们已经相识：</p> <!-- 在时间之前添加文字 -->
         <p id="timer">日：小时：分钟：秒</p>
     </div>
     <div id="button">
-        <button>Click me</button>
+        <button>查看</button>
     </div>
     <script>
         // Set the date we're counting down to
@@ -53,6 +90,5 @@
             + minutes + "分钟 " + seconds + "秒 ";
         }, 1000);
     </script>
-    <script src="/JS/helvetiker_regular.typeface.js"></script>
 </body>
 </html>
