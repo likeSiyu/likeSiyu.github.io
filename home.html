@@ -61,6 +61,34 @@
                 transform: scale(2);
             }
         }
+        /* 添加心形样式 */
+        .heart {
+            background-color: red;
+            height: 30px;
+            width: 30px;
+            transform: rotate(45deg);
+            position: relative;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            background-color: red;
+            border-radius: 50%;
+            height: 30px;
+            position: absolute;
+            width: 30px;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -15px;
+        }
     </style>
 </head>
 <body>
@@ -86,8 +114,8 @@
         <p id="timer">日：小时：分钟：秒</p>
     </div>
     <div id="button">
-        <button>查看</button>
-    </div>
+        <button onclick="window.location.href='/story/20231201/today.html'">查看</button>
+    </div>    
     <script>
         // Set the date we're counting down to
         var countDownDate = new Date("Dec 1, 2022 08:00:00").getTime();
@@ -112,32 +140,24 @@
             + minutes + "分钟 " + seconds + "秒 ";
         }, 1000);
         document.addEventListener('click', function(event) {
-            // 随机选择一个颜色
             var colors = ['#EC8F5E', '#F7EFE5', '#C3ACD0', '#61A3BA', '#872341', '#435585', '#2D9596'];
 
-            // 创建多个元素
             for (var i = 0; i < colors.length; i++) {
-                // 创建一个新的元素
-                var ripple = document.createElement('div');
-                // 设置元素的样式
-                ripple.style.width = ripple.style.height = '100px';
-                ripple.style.background = colors[i];
-                ripple.style.borderRadius = '50%';
-                ripple.style.position = 'fixed';
-                ripple.style.pointerEvents = 'none';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.opacity = '1';
-                ripple.style.animation = 'clickEffect 1s linear forwards';
-                ripple.style.animationDelay = (i * 0.1) + 's'; // 添加延迟时间
-                // 设置元素的位置
-                ripple.style.left = (event.clientX - 50 + Math.cos(i * Math.PI / 3.5) * 50) + 'px';
-                ripple.style.top = (event.clientY - 50 + Math.sin(i * Math.PI / 3.5) * 50) + 'px';
-                // 将元素添加到网页中
-                document.body.appendChild(ripple);
-                // 在动画结束后移除元素
+                var heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.position = 'fixed';
+                heart.style.pointerEvents = 'none';
+                heart.style.transform = 'scale(0)';
+                heart.style.opacity = '1';
+                heart.style.animation = 'clickEffect 1s linear forwards';
+                heart.style.animationDelay = (i * 0.1) + 's';
+                heart.style.left = (event.clientX - 50 + Math.cos(i * Math.PI / 3.5) * 50) + 'px';
+                heart.style.top = (event.clientY - 50 + Math.sin(i * Math.PI / 3.5) * 50) + 'px';
+                document.body.appendChild(heart);
+
                 setTimeout(function() {
-                    document.body.removeChild(ripple);
-                }, 1000 + i * 100); // 考虑到延迟时间
+                    document.body.removeChild(heart);
+                }, 1000 + i * 100);
             }
         });
 

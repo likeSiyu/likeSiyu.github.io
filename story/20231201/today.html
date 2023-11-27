@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>晓宇和思雨的一周年纪念</title>
+    <link rel="icon" href="/img/home/ico.png" type="image/png">
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(to bottom right, #FCF5ED, #FFFFFF);
+        }
+        #images1, #images2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        #images1 img, #images2 img {
+            border-radius: 50%;
+            height: 100px; /* 设置图片的高度 */
+            width: auto; /* 让图片的宽度自动调整以保持原始的宽高比 */
+        }
+        #countdown {
+            width:50%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        #title {
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        button {
+            font-size: 24px;
+            background-color: #E7BCDE;
+            border-radius: 12px;
+        }
+        .myIframe {
+            width: 80vw;
+            height: 80vh;
+        }
+
+        @media (max-width: 600px) {
+            .myIframe {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+        @keyframes clickEffect {
+            from {
+                opacity: 1;
+                transform: scale(0);
+            }
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+        /* 添加心形样式 */
+        .heart {
+            background-color: red;
+            height: 30px;
+            width: 30px;
+            transform: rotate(45deg);
+            position: relative;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            background-color: red;
+            border-radius: 50%;
+            height: 30px;
+            position: absolute;
+            width: 30px;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -15px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h1 style="display: flex; align-items: center; justify-content: center;">
+            <img src="/img/home/t1.png" alt="Image description" width="50" height="50">
+            晓宇和思雨的一周年纪念
+            <img src="/img/home/t2.png" alt="Image description" width="50" height="50">
+        </h1>
+        <h2 style="font-size:medium; font-family: 'KaiTi'; text-align: center;">
+            今天是2023年12月1日
+        </h2>
+    </div>    
+
+    <div style="display: flex;">
+        <!-- 左边的图片 -->
+        <div style="flex: 1;">
+            <img src="/img/20231201/20231201.jpg" style="width: 70%; aspect-ratio: 3 / 4;">
+        </div>
+
+        <!-- 右边的文字 -->
+        <div id="text" style="flex: 1;"></div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 1px;">
+        <!-- 左边的两个带图标的按钮 -->
+        <button onclick="showPopup()" style="margin-right: 10px; background-color: #F7EFE5;">
+            <img src="/img/home/左.png" alt="Icon 1" style="width: 20px; height: 20px;">
+            上一天
+        </button>
+        <button onclick="window.location.href='/story/20231202/today.html'" style="margin-right: 10px; background-color: #F7EFE5;">
+            <img src="/img/home/右.png" alt="Icon 2" style="width: 20px; height: 20px;">
+            下一天
+        </button>        
+    
+        <!-- 右边的日期选择器 -->
+        <input id="datePicker" type="date" style="margin-right: 10px; background-color: #F7EFE5;">
+    </div>        
+
+    <!-- 弹窗 -->
+    <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #FF8F8F; padding: 20px; border-radius: 25px;">
+        <div style="position: relative; width: 200px; height: 180px; margin: 0 auto;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+                宝贝，我们是今天认识喔！嘿嘿，看看今天爱你的话吧
+            </div>
+        </div>
+        <div class="heart" onclick="closePopup()" style="position: absolute; top: 0; right: 0;">
+            <button>
+                关闭
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('click', function(event) {
+            var colors = ['#EC8F5E', '#F7EFE5', '#C3ACD0', '#61A3BA', '#872341', '#435585', '#2D9596'];
+
+            for (var i = 0; i < colors.length; i++) {
+                var heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.position = 'fixed';
+                heart.style.pointerEvents = 'none';
+                heart.style.transform = 'scale(0)';
+                heart.style.opacity = '1';
+                heart.style.animation = 'clickEffect 1s linear forwards';
+                heart.style.animationDelay = (i * 0.1) + 's';
+                heart.style.left = (event.clientX - 50 + Math.cos(i * Math.PI / 3.5) * 50) + 'px';
+                heart.style.top = (event.clientY - 50 + Math.sin(i * Math.PI / 3.5) * 50) + 'px';
+                document.body.appendChild(heart);
+
+                setTimeout(function() {
+                    document.body.removeChild(heart);
+                }, 1000 + i * 100);
+            }
+        });
+
+        var text = `
+            亲爱的思雨，
+
+            我希望这封信能找到你，希望你一切都好。
+
+            今天是我们认识的一周年纪念日，我想借此机会向你表达我对你的深深感激。你是我生命中最美好的礼物，你的存在让我的世界变得更加光明。
+
+            虽然我们相隔千里，但我想你知道，无论距离有多远，我们的心永远相连。你的笑容，你的声音，你的温柔，都深深地印在我的心里。我永远不会忘记我们在5月和10月见面的两次，那是我最幸福的时光。
+
+            你让我感受到了爱的力量，你给了我勇气和希望。我爱你，我想你，我期待着我们再次相见的那一天。
+
+            请你一定要好好照顾自己，保持开心和健康。我祝你一切顺利，我祝我们永远幸福。
+
+            期待再次见到你的那一天。
+
+            永远爱你的，
+            晓宇
+            `;
+
+        var index = 0;
+        var speed = 100;  // 初始速度
+
+        function typeText() {
+            if (index < text.length) {
+                document.getElementById('text').innerText += text.charAt(index);
+                index++;
+                speed *= 0.4;  // 逐渐加快速度
+                setTimeout(typeText, speed);
+            }
+        }
+
+        typeText();  // 开始打字
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("datePicker").value = today;
+
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
