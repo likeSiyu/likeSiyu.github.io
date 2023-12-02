@@ -102,7 +102,7 @@
     <iframe class="myIframe" src="love.html"></iframe>
     <div id="images" style="display: flex; justify-content: center; align-items: center;">
         <div id="images1">
-            <img class="round-image" src="/img/home/h1.jpg" alt="Image 1">
+            <img class="round-imasuspr惊喜ge" src="/img/home/h1.jpg" alt="Image 1">
         </div>
         <img src="/img/home/logi.gif" alt="Image 2" style="width: 20%; height: auto;">
         <div id="images2">
@@ -115,7 +115,26 @@
     </div>
     <div id="button">
         <button onclick="redirectToToday()">查看</button>
+        <button onclick="surprise()">小惊喜</button>
     </div>    
+    <!-- 弹窗 -->
+    <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #FF8F8F; padding: 20px; border-radius: 25px;">
+        <div style="position: relative; width: 200px; height: 180px; margin: 0 auto;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+                宝贝，来看看一个小惊喜吧，刚学哒，这就是程序员男朋友！
+            </div>
+        </div>
+        <div class="heart" onclick="closePopup()" style="position: absolute; top: 0; right: 0;">
+            <button>
+                关闭
+            </button>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="redirectToPage()">
+                去看看
+            </button>
+        </div>
+    </div>
     <script>
         // Set the date we're counting down to
         var countDownDate = new Date("Dec 1, 2022 08:00:00").getTime();
@@ -187,6 +206,24 @@
 
         return year + month + day;
     }
+
+    function surprise() {
+            // 显示弹窗
+            showPopup();
+        }
+
+    function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function redirectToPage() {
+            // 使用 window.location.href 进行页面跳转
+            window.location.href = '/other/jinxi.html';
+        }
 
     </script>
 </body>

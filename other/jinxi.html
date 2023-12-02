@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="/css/style.css" rel="stylesheet" />
+    <title>晓宇和思雨的一周年纪念</title>
+    <link rel="icon" href="/img/home/ico.png" type="image/png">
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(to bottom right, #FCF5ED, #FFFFFF);
+        }
+        #images1, #images2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        #images1 img, #images2 img {
+            border-radius: 50%;
+            height: 100px; /* 设置图片的高度 */
+            width: auto; /* 让图片的宽度自动调整以保持原始的宽高比 */
+        }
+        #countdown {
+            width:50%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        #title {
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        button {
+            font-size: 24px;
+            background-color: #E7BCDE;
+            border-radius: 12px;
+        }
+        .myIframe {
+            width: 80vw;
+            height: 80vh;
+        }
+
+        @media (max-width: 600px) {
+            .myIframe {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+        @keyframes clickEffect {
+            from {
+                opacity: 1;
+                transform: scale(0);
+            }
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+        /* 添加心形样式 */
+        .heart {
+            background-color: red;
+            height: 30px;
+            width: 30px;
+            transform: rotate(45deg);
+            position: relative;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            background-color: red;
+            border-radius: 50%;
+            height: 30px;
+            position: absolute;
+            width: 30px;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h1 style="display: flex; align-items: center; justify-content: center;">
+            <img src="/img/home/t1.png" alt="Image description" width="50" height="50">
+            晓宇和思雨的一周年纪念
+            <img src="/img/home/t2.png" alt="Image description" width="50" height="50">
+        </h1>
+        <br>
+        <h2 id="todayDate" style="font-size: medium; font-family: 'KaiTi'; text-align: center;">
+            如果需要更换其他照片，你可以发给我更多，哈哈哈
+        </h2>
+    </div>
+    <div class="box">
+        <ul class="minbox">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ol class="maxbox">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="goBack()">
+            返回
+        </button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
