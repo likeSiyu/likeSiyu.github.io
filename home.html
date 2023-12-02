@@ -114,7 +114,7 @@
         <p id="timer">日：小时：分钟：秒</p>
     </div>
     <div id="button">
-        <button onclick="window.location.href='/story/20231201/today.html'">查看</button>
+        <button onclick="redirectToToday()">查看</button>
     </div>    
     <script>
         // Set the date we're counting down to
@@ -160,6 +160,33 @@
                 }, 1000 + i * 100);
             }
         });
+
+        function redirectToToday() {
+        var today = getFormattedDate();
+        var url = '/story/' + today + '/today.html';
+
+        // 使用 fetch 检查文件是否存在
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('文件不存在');
+                }
+                window.location.href = url;
+            })
+            .catch(error => {
+                // 文件不存在时弹出提示框
+                alert('今日还未更新哟宝宝');
+            });
+    }
+
+    function getFormattedDate() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = (date.getMonth() + 1).toString().padStart(2, '0');
+        var day = date.getDate().toString().padStart(2, '0');
+
+        return year + month + day;
+    }
 
     </script>
 </body>
