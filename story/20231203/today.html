@@ -102,15 +102,35 @@
         <h2 id="todayDate" style="font-size: medium; font-family: 'KaiTi'; text-align: center;"></h2>
     </div>    
 
-    <div style="display: flex;">
-        <!-- 左边的图片 -->
-        <div style="flex: 1;">
-            <video id="todayVideo" style="width: 70%;" controls></video>
-        </div>        
+    <script>
+        function checkPassword() {
+            var password = prompt('请输入密码', '');
+            if (password != '大宝宝') {
+                alert('密码错误!');
+                return false;
+            }
+            return true;
+        }
+        </script>
 
-        <!-- 右边的文字 -->
-        <div id="text" style="flex: 1;"></div>
+        <div style="display: none;" id="protectedContent">
+        <div style="display: flex;">
+            <!-- 左边的视频 -->
+            <div style="flex: 1;">
+                <video id="todayVideo" style="width: 70%;" controls>
+                    <source src="/private/mimi.mp4" type="video/mp4">
+                </video>              
+            </div>        
+
+            <!-- 右边的文字和图片 -->
+            <div id="text" style="flex: 1;">
+                
+            </div>
+            
+        </div>
     </div>
+
+    <button onclick="if (checkPassword()) { document.getElementById('protectedContent').style.display = 'block'; }">显示内容</button>
 
     <div style="display: flex; justify-content: center; margin-top: 1px;">
         <button onclick="showPreviousDay()" style="margin-right: 10px; background-color: #F7EFE5;">
@@ -150,10 +170,10 @@
         });
 
         var text = `
-            嘿嘿，今天是第二天呀，也是星期六，耶！我们可以打视频了！！开心！期待哟
-            哈哈哈，看我们之前的聊天记录吧，哈哈哈，喜欢下雪的你，但是害怕冷的你，没有羽绒服，哈哈哈。
-            每天我都会试着更新的哒，如果没有更新，可能太忙了，希望宝宝见谅呀！
-            mua！
+            第三天到啦，明天就要搬家啦，拥有一个自己的房间，虽然很小，但是很期待，我租它9个月，这样可以等你一起来啦，
+            嘿嘿，不用继续酒店，可以随意在我的房间玩，哈哈哈，想你快快再来中国吧
+            我1月也会到越南见你，耶！开心。
+            而且，我们可以打视频更多，聊天更多开心！开心！
             `;
 
         var index = 0;
