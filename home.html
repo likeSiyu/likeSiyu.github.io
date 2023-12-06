@@ -116,6 +116,7 @@
     <div id="button">
         <button onclick="redirectToToday()">查看</button>
         <button onclick="surprise()">小惊喜</button>
+        <button onclick="openSpecificPage()">往日</button>
     </div>    
     <!-- 弹窗 -->
     <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #FF8F8F; padding: 20px; border-radius: 25px;">
@@ -225,6 +226,10 @@
             window.location.href = '/other/jinxi.html';
         }
 
+        function openSpecificPage() {
+            // 跳转到指定的HTML页面
+            window.location.href = '/story/20231201/today.html';
+        }
     </script>
 </body>
 </html>
