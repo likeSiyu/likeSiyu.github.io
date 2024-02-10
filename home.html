@@ -116,6 +116,7 @@
     <div id="button">
         <button onclick="redirectToToday()">查看</button>
         <button onclick="surprise()">小惊喜</button>
+        <button onclick="game()">小游戏</button>
         <button onclick="openSpecificPage()">往日</button>
     </div>    
     <!-- 弹窗 -->
@@ -212,6 +213,10 @@
             // 显示弹窗
             showPopup();
         }
+
+    function game() {
+        window.location.href = '/game/index.html';
+    }
 
     function showPopup() {
             document.getElementById('popup').style.display = 'block';

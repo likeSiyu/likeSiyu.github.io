@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>晓宇和思雨的一周年纪念</title>
+    <link rel="icon" href="/img/home/ico.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(to bottom right, #FCF5ED, #FFFFFF);
+        }
+        #images1, #images2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        #images1 img, #images2 img {
+            border-radius: 50%;
+            height: 100px; /* 设置图片的高度 */
+            width: auto; /* 让图片的宽度自动调整以保持原始的宽高比 */
+        }
+        #countdown {
+            width:50%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        #title {
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        button {
+            font-size: 24px;
+            background-color: #E7BCDE;
+            border-radius: 12px;
+        }
+        .myIframe {
+            width: 80vw;
+            height: 80vh;
+        }
+
+        @media (max-width: 600px) {
+            .myIframe {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+        @keyframes clickEffect {
+            from {
+                opacity: 1;
+                transform: scale(0);
+            }
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+        /* 添加心形样式 */
+        .heart {
+            background-color: red;
+            height: 30px;
+            width: 30px;
+            transform: rotate(45deg);
+            position: relative;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            background-color: red;
+            border-radius: 50%;
+            height: 30px;
+            position: absolute;
+            width: 30px;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -15px;
+        }
+
+        .game {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .game-container {
+            display: flex;
+            flex-wrap: wrap; /* 自动换行 */
+            justify-content: space-between;
+        }
+
+            .game {
+            width: 25%; /* 每个游戏宽度改为 25% */
+            margin: 10px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+  <h1>游戏展示</h1>
+
+  <div class="game-container">
+    <div class="game">
+        <a href="/game/SantaClausOverTheCliff/index.html">
+            <img src="https://th.bing.com/th/id/R.3067e9dddabb1e6c2b230a7797ba39c4?rik=fnDCLQ2eHEmeEA&pid=ImgRaw&r=0" alt="圣诞老人过悬崖" width="200px">
+          <h3>圣诞老人过悬崖</h3>
+        </a>
+      </div>
+      
+    <div class="game">
+      <img src="game2.jpg" alt="游戏2">
+      <h3>游戏2</h3>
+    </div>
+    <div class="game">
+      <img src="game3.jpg" alt="游戏3">
+      <h3>游戏3</h3>
+    </div>
+    <div class="game">
+      <img src="game4.jpg" alt="游戏4">
+      <h3>游戏4</h3>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('click', function(event) {
+        var colors = ['#EC8F5E', '#F7EFE5', '#C3ACD0', '#61A3BA', '#872341', '#435585', '#2D9596'];
+
+        for (var i = 0; i < colors.length; i++) {
+            var heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.position = 'fixed';
+            heart.style.pointerEvents = 'none';
+            heart.style.transform = 'scale(0)';
+            heart.style.opacity = '1';
+            heart.style.animation = 'clickEffect 1s linear forwards';
+            heart.style.animationDelay = (i * 0.1) + 's';
+            heart.style.left = (event.clientX - 50 + Math.cos(i * Math.PI / 3.5) * 50) + 'px';
+            heart.style.top = (event.clientY - 50 + Math.sin(i * Math.PI / 3.5) * 50) + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(function() {
+                document.body.removeChild(heart);
+            }, 1000 + i * 100);
+        }
+    });
+    </script>
+</body>
+</html>
