@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>晓宇和思雨的一周年纪念</title>
+    <link rel="icon" href="/img/home/ico.png" type="image/png">
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(to bottom right, #FCF5ED, #FFFFFF);
+        }
+        #images1, #images2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+        #images1 img, #images2 img {
+            border-radius: 50%;
+            height: 100px; /* 设置图片的高度 */
+            width: auto; /* 让图片的宽度自动调整以保持原始的宽高比 */
+        }
+        #countdown {
+            width:50%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        #title {
+            width: 50%;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            background-color: rgba(150, 239, 255, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        button {
+            font-size: 24px;
+            background-color: #E7BCDE;
+            border-radius: 12px;
+        }
+        .myIframe {
+            width: 80vw;
+            height: 80vh;
+        }
+
+        @media (max-width: 600px) {
+            .myIframe {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+        @keyframes clickEffect {
+            from {
+                opacity: 1;
+                transform: scale(0);
+            }
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+        /* 添加心形样式 */
+        .heart {
+            background-color: red;
+            height: 30px;
+            width: 30px;
+            transform: rotate(45deg);
+            position: relative;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            background-color: red;
+            border-radius: 50%;
+            height: 30px;
+            position: absolute;
+            width: 30px;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -15px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h1 style="display: flex; align-items: center; justify-content: center;">
+            <img src="/img/home/t1.png" alt="Image description" width="50" height="50">
+            晓宇和思雨的一周年纪念
+            <img src="/img/home/t2.png" alt="Image description" width="50" height="50">
+        </h1>
+        <h2 id="todayDate" style="font-size: medium; font-family: 'KaiTi'; text-align: center;"></h2>
+    </div>    
+
+    <div style="display: flex;">
+        <!-- 左边的图片 -->
+        <div style="flex: 1;">
+            <a href="https://v.douyin.com/iN6a9LdV/">
+                <img src="/img/back/31.jpg" style="width: 70%;" controls>
+              </a>              
+        </div>        
+
+        <!-- 右边的文字 -->
+        <div id="text" style="flex: 1;"></div>
+
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 1px;">
+        <button onclick="showPreviousDay()" style="margin-right: 10px; background-color: #F7EFE5;">
+            <img src="/img/home/左.png" alt="Icon 1" style="width: 20px; height: 20px;">
+            上一天
+        </button>
+        <button onclick="showNextDay()" style="margin-right: 10px; background-color: #F7EFE5;">
+            <img src="/img/home/右.png" alt="Icon 2" style="width: 20px; height: 20px;">
+            下一天
+        </button>
+        <input id="datePicker" type="date" style="margin-right: 10px; background-color: #F7EFE5;">
+    </div>        
+
+
+
+    <script>
+        document.addEventListener('click', function(event) {
+            var colors = ['#EC8F5E', '#F7EFE5', '#C3ACD0', '#61A3BA', '#872341', '#435585', '#2D9596'];
+
+            for (var i = 0; i < colors.length; i++) {
+                var heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.position = 'fixed';
+                heart.style.pointerEvents = 'none';
+                heart.style.transform = 'scale(0)';
+                heart.style.opacity = '1';
+                heart.style.animation = 'clickEffect 1s linear forwards';
+                heart.style.animationDelay = (i * 0.1) + 's';
+                heart.style.left = (event.clientX - 50 + Math.cos(i * Math.PI / 3.5) * 50) + 'px';
+                heart.style.top = (event.clientY - 50 + Math.sin(i * Math.PI / 3.5) * 50) + 'px';
+                document.body.appendChild(heart);
+
+                setTimeout(function() {
+                    document.body.removeChild(heart);
+                }, 1000 + i * 100);
+            }
+        });
+
+        var text = `
+        我的宝宝，嘿嘿，我又来了咯。好久没有写信息啦，你有没有想我喔，
+
+        哈哈哈。那么我接下来就把我从2月6号的事都告诉你吧。
+
+        6号的早上，我起床7点，然后装行李，还好我准备了一个行李清单，否则我会忘记很多，
+
+        不知道为什么我开始容易以往事情。呜呜呜，然后我带上行李出发啦！
+
+        坐上公交车，然后地铁，进入“上海站”火车站，我们之前去苏州的火车站，但是这一次没有人叫我叔叔喔，哈哈哈。
+
+        对了，我在参加之前的志愿者活动的时候，当运动员结束的时候，观众会给喜欢的运动员送玩偶，就像视频里的一样，（你点击那个图片就可以看见视频啦）。
+        
+        然后有许多玩偶会被扔出来，然后我去捡它，这个时候有一个小朋友一直在大声说“叔叔，叔叔，叔叔，给我一个，叔叔！”，然后我说你叫我帅哥哥，我给你一个，
+
+        然后他说“最帅的哥哥给我一个吧”，哈哈哈，然后我偷偷给他一个。
+
+        火车站有太多人啦，有人插队，哼！然后我大声说话“我靠！什么东西插队我的！”，哈哈哈，大家都看我。
+
+        然后我检票，我上火车啦，是卧铺，可以睡觉，但是我只订购到上铺，就是最高的床，我上去太费劲了，但是我很幸运，因为我一次就买到了车票，
+
+        我听见车厢其他人说，他们买了很多天，还找了其他人代买，但是很不容易，他们很着急，没有车票他们将无法回家，他们多花了300多块才买到，
+
+        但是因为我是大学生，所以我一定可以购买到车票，哈哈哈，而且有折扣75折，很便宜，只需要309元，但是时间有点久，我从6号的10:49出发，7号的15:49到达遂宁。
+
+        然后我坐大巴回到大英，我就去理发，哈哈哈，很丑很丑！！！这几天我一直没有摘下我的帽子。我害怕小孩子笑我，哈哈哈。
+
+        回到家还是有点无聊啊，但很自由，我可以开心骑车去很多地方，空气也很好，但是很冷，很奇怪，房间比外面更冷，因为我的家后面是一座山。
+
+        但是没有大风，上海天天都是大风。
+
+        还有昨天我们打视频，我带你四处看，然后你也看见了我的妈妈，哈哈哈，然后我妈妈问我为什么戴耳机，我说跟朋友聊天，我妈妈说“是女朋友吗？你在谈恋爱了吗？”
+
+        我哈哈哈笑，然后我妈妈说“你也谈一个女朋友吧，早点带回家来”。但是这个时候被其他邻居听见，他们以为我带女朋友回家了，然后很多人来我的家，哈哈哈，我说没有。
+
+        你们听错了，哈哈哈，笑死我了。
+        `
+
+
+
+        var index = 0;
+        var speed = 100;  // 初始速度
+
+        function typeText() {
+            if (index < text.length) {
+                document.getElementById('text').innerText += text.charAt(index);
+                index++;
+                speed *= 0.4;  // 逐渐加快速度
+                setTimeout(typeText, speed);
+            }
+        }
+
+        typeText();  // 开始打字
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("datePicker").value = today;
+
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // 更新页面加载时显示的日期
+        document.addEventListener("DOMContentLoaded", function () {
+            updateTodayDate();
+        });
+
+        function updateTodayDate() {
+            var todayDateElement = document.getElementById("todayDate");
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+            var day = currentDate.getDate().toString().padStart(2, '0');
+
+            todayDateElement.innerText = "今天是" + year + "年" + month + "月" + day + "日";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            updateVideoAndImage();
+        });
+
+        function updateVideoAndImage() {
+            var todayVideoElement = document.getElementById("todayVideo");
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+            var day = currentDate.getDate().toString().padStart(2, '0');
+            var videoPath = "/video/" + year + month + day + "/video.mp4";
+            var imagePath = "/img/" + "今日" + year + month + day + "/today.jpg"; // You can use .png as well
+
+            // Check if the video file exists
+            fetch(videoPath)
+                .then(response => {
+                    if (!response.ok) {
+                        // Video file doesn't exist, try loading image
+                        imagePath = "/img/back/" + getRandomNumber(1, 22) + ".jpg";
+                        throw new Error('Video not found');
+                    }
+                    return response.blob();
+                })
+                .then(videoBlob => {
+                    var videoObjectURL = URL.createObjectURL(videoBlob);
+                    todayVideoElement.src = videoObjectURL;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function showPreviousDay() {
+            var currentDate = new Date(document.getElementById("datePicker").value);
+            currentDate.setDate(currentDate.getDate() - 1);
+            updatePageForDate(currentDate);
+        }
+
+        function showNextDay() {
+            var currentDate = new Date(document.getElementById("datePicker").value);
+            currentDate.setDate(currentDate.getDate() + 1);
+            updatePageForDate(currentDate);
+        }
+
+        function showSelectedDay() {
+            var selectedDate = new Date(document.getElementById("datePicker").value);
+            updatePageForDate(selectedDate);
+        }
+
+        function updatePageForDate(date) {
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1).toString().padStart(2, '0');
+            var day = date.getDate().toString().padStart(2, '0');
+            var targetPath = "/story/" + year + month + day + "/today.html";
+
+            // Check if the target page exists
+            fetch(targetPath)
+                .then(response => {
+                    if (!response.ok) {
+                        // Page doesn't exist, show a popup
+                        alert("没有喔宝宝！等待老公更新！");
+                        throw new Error('Page not found');
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    // Replace the current page content with the new page content
+                    document.body.innerHTML = html;
+                    // Update date picker value
+                    document.getElementById("datePicker").value = year + '-' + month + '-' + day;
+                    // Update today date
+                    updateTodayDate();
+                    // Update video and image
+                    updateVideoAndImage();
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+        document.getElementById("datePicker").addEventListener("input", function () {
+            showSelectedDay();
+        });
+
+    </script>
+</body>
+</html>
